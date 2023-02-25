@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 import { Secret, verify } from "jsonwebtoken"
 
-const VerifyToken = (request: Request, response: Response, next: NextFunction) => {
+export const VerifyTokenMock = (request: Request, response: Response, next: NextFunction, secret: Secret) => {
     try {
         const token = request.headers.token as string
 
@@ -9,8 +9,8 @@ const VerifyToken = (request: Request, response: Response, next: NextFunction) =
             return response.status(400).send({ error: "token must be provided"})
         }
 
-        verify(token, (process.env.SECRET as Secret), (err, decoded) => {
-            if (err) return response.status(400).send({ error: "token invalid" })
+        verify(token, secret, (err, decoded) => {
+            if (err) return response.status(400).send({ error: "invalid token" })
 
             response.locals.user = decoded
             return next()
@@ -20,4 +20,4 @@ const VerifyToken = (request: Request, response: Response, next: NextFunction) =
     }
 }
 
-export default VerifyToken
+export const VerifyToken = (request: Request, response: Response, next: NextFunction) => VerifyTokenMock(request, response, next, process.env.SECRET as Secret)
