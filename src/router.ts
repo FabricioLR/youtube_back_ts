@@ -6,7 +6,7 @@ import UserController from "./controllers/UserController"
 import VideoController from "./controllers/VideoController"
 import uploadVideo from "./services/firebaseServices/updateVideo"
 import uploadImage from "./services/firebaseServices/uploadImage"
-import VerifyToken from "./services/SecurityServices/verifyToken"
+import { VerifyToken } from "./services/SecurityServices/verifyToken"
 
 const Multer = multer({
     storage: multer.memoryStorage(),

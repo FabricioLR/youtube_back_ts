@@ -1,5 +1,5 @@
 import sequelize from "../database"
-import { DataTypes, InferAttributes, InferCreationAttributes, Model } from "Sequelize"
+import { DataTypes, InferAttributes, InferCreationAttributes, Model } from "sequelize"
 
 export interface UserModel extends Model<InferAttributes<UserModel>, InferCreationAttributes<UserModel>>{
     id?: string

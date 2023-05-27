@@ -1,7 +1,7 @@
 import User from "../../models/User"
 import Video from "../../models/Video"
-import createToken from "../SecurityServices/createToken"
-import verifyPassword from "../SecurityServices/verifyPassword"
+import { createToken } from "../SecurityServices/createToken"
+import { verifyPassword } from "../SecurityServices/verifyPassword"
 
 type AuthenticateData = {
     email: string
@@ -20,7 +20,7 @@ async function authenticate(data: AuthenticateData){
         if (!user) throw "user not found"
     
     
-        const verify = await verifyPassword({ password: data.password, userPassword: (user.password as string) })
+        const verify = await verifyPassword(data.password, user.password as string)
 
         if (!verify) throw "invalid password or email"
     

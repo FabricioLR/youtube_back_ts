@@ -1,6 +1,6 @@
 import User from "../../models/User"
-import createToken from "../SecurityServices/createToken"
-import hash from "../SecurityServices/hash"
+import { createToken } from "../SecurityServices/createToken"
+import { hash } from "../SecurityServices/hash"
 
 type CreateData = {
     email: string

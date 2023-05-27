@@ -1,4 +1,4 @@
-import { Sequelize } from "Sequelize"
+import { Sequelize } from "sequelize"
 
 const sequelize = new Sequelize((process.env.url as string))
 
